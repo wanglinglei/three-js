@@ -1,17 +1,10 @@
 <template>
   <div>
-    home
   </div>
 </template>
 <script setup>
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-// const blob1 = require('../../assets/imgs/blob1.jpg');
-// const blob2 = require('../../assets/imgs/blob2.jpg')
-// const blob3 = require('../../assets/imgs/blob3.jpg')
-// const blob4 = require('../../assets/imgs/blob4.jpg')
-// const blob5 = require('../../assets/imgs/blob5.jpg')
-// const blob6=require('../../assets/imgs/blob6.jpg')
 // 添加场景 ----------------------------------------------------------------
 const scene = new THREE.Scene();
 
@@ -21,9 +14,9 @@ camera.position.set(0, 0, 10)
 scene.add(camera)
 
 const cubeTextureLoader = new THREE.CubeTextureLoader();
-const list =['blob1', 'blob3', 'blob6', 'blob4', 'blob5', 'blob2']
+const list = ['blob1', 'blob3', 'blob6', 'blob4', 'blob5', 'blob2']
 const textureList = list.map((name) => {
-  return "/imgs/" + name + ".jpg";
+  return "/assets/vr/" + name + ".jpg";
 });
 const envMapTexture = cubeTextureLoader.load([...textureList]);
 
@@ -65,11 +58,11 @@ document.body.appendChild(renderer.domElement)
 renderer.render(scene, camera)
 
 // 创建轨道控制器
-const controls= new OrbitControls(camera, renderer.domElement)
+const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true;
 
 // 添加坐标辅助器
-const axesHelper=new THREE.AxesHelper(4)
+const axesHelper = new THREE.AxesHelper(4)
 scene.add(axesHelper)
 function render () {
   renderer.render(scene, camera);
